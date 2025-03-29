@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: untitled
+# Project: TeaPlusPlus
 # Configurations: Debug
 # =============================================================================
 
@@ -41,65 +41,65 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = /home/venge/CLionProjects/untitled/cmake-build-debug/
 # =============================================================================
-# Object build statements for EXECUTABLE target untitled
+# Object build statements for EXECUTABLE target TeaPlusPlus
 
 
 #############################################
-# Order-only phony target for untitled
+# Order-only phony target for TeaPlusPlus
 
-build cmake_object_order_depends_target_untitled: phony || .
+build cmake_object_order_depends_target_TeaPlusPlus: phony || .
 
-build CMakeFiles/untitled.dir/main.cpp.o: CXX_COMPILER__untitled_unscanned_Debug /home/venge/CLionProjects/untitled/main.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/main.cpp.o.d
+build CMakeFiles/TeaPlusPlus.dir/main.cpp.o: CXX_COMPILER__TeaPlusPlus_unscanned_Debug /home/venge/CLionProjects/untitled/main.cpp || cmake_object_order_depends_target_TeaPlusPlus
+  DEP_FILE = CMakeFiles/TeaPlusPlus.dir/main.cpp.o.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir
+  OBJECT_DIR = CMakeFiles/TeaPlusPlus.dir
+  OBJECT_FILE_DIR = CMakeFiles/TeaPlusPlus.dir
 
-build CMakeFiles/untitled.dir/displayBuffer.cpp.o: CXX_COMPILER__untitled_unscanned_Debug /home/venge/CLionProjects/untitled/displayBuffer.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/displayBuffer.cpp.o.d
+build CMakeFiles/TeaPlusPlus.dir/displayBuffer.cpp.o: CXX_COMPILER__TeaPlusPlus_unscanned_Debug /home/venge/CLionProjects/untitled/displayBuffer.cpp || cmake_object_order_depends_target_TeaPlusPlus
+  DEP_FILE = CMakeFiles/TeaPlusPlus.dir/displayBuffer.cpp.o.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir
+  OBJECT_DIR = CMakeFiles/TeaPlusPlus.dir
+  OBJECT_FILE_DIR = CMakeFiles/TeaPlusPlus.dir
 
-build CMakeFiles/untitled.dir/physicsEntity.cpp.o: CXX_COMPILER__untitled_unscanned_Debug /home/venge/CLionProjects/untitled/physicsEntity.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/physicsEntity.cpp.o.d
+build CMakeFiles/TeaPlusPlus.dir/physicsEntity.cpp.o: CXX_COMPILER__TeaPlusPlus_unscanned_Debug /home/venge/CLionProjects/untitled/physicsEntity.cpp || cmake_object_order_depends_target_TeaPlusPlus
+  DEP_FILE = CMakeFiles/TeaPlusPlus.dir/physicsEntity.cpp.o.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir
+  OBJECT_DIR = CMakeFiles/TeaPlusPlus.dir
+  OBJECT_FILE_DIR = CMakeFiles/TeaPlusPlus.dir
 
-build CMakeFiles/untitled.dir/sprite.cpp.o: CXX_COMPILER__untitled_unscanned_Debug /home/venge/CLionProjects/untitled/sprite.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/sprite.cpp.o.d
+build CMakeFiles/TeaPlusPlus.dir/sprite.cpp.o: CXX_COMPILER__TeaPlusPlus_unscanned_Debug /home/venge/CLionProjects/untitled/sprite.cpp || cmake_object_order_depends_target_TeaPlusPlus
+  DEP_FILE = CMakeFiles/TeaPlusPlus.dir/sprite.cpp.o.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir
+  OBJECT_DIR = CMakeFiles/TeaPlusPlus.dir
+  OBJECT_FILE_DIR = CMakeFiles/TeaPlusPlus.dir
 
-build CMakeFiles/untitled.dir/physicsEngine.cpp.o: CXX_COMPILER__untitled_unscanned_Debug /home/venge/CLionProjects/untitled/physicsEngine.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/physicsEngine.cpp.o.d
+build CMakeFiles/TeaPlusPlus.dir/physicsEngine.cpp.o: CXX_COMPILER__TeaPlusPlus_unscanned_Debug /home/venge/CLionProjects/untitled/physicsEngine.cpp || cmake_object_order_depends_target_TeaPlusPlus
+  DEP_FILE = CMakeFiles/TeaPlusPlus.dir/physicsEngine.cpp.o.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir
+  OBJECT_DIR = CMakeFiles/TeaPlusPlus.dir
+  OBJECT_FILE_DIR = CMakeFiles/TeaPlusPlus.dir
 
-build CMakeFiles/untitled.dir/levelLoader.cpp.o: CXX_COMPILER__untitled_unscanned_Debug /home/venge/CLionProjects/untitled/levelLoader.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/levelLoader.cpp.o.d
+build CMakeFiles/TeaPlusPlus.dir/levelLoader.cpp.o: CXX_COMPILER__TeaPlusPlus_unscanned_Debug /home/venge/CLionProjects/untitled/levelLoader.cpp || cmake_object_order_depends_target_TeaPlusPlus
+  DEP_FILE = CMakeFiles/TeaPlusPlus.dir/levelLoader.cpp.o.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir
+  OBJECT_DIR = CMakeFiles/TeaPlusPlus.dir
+  OBJECT_FILE_DIR = CMakeFiles/TeaPlusPlus.dir
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target untitled
+# Link build statements for EXECUTABLE target TeaPlusPlus
 
 
 #############################################
-# Link the executable untitled
+# Link the executable TeaPlusPlus
 
-build untitled: CXX_EXECUTABLE_LINKER__untitled_Debug CMakeFiles/untitled.dir/main.cpp.o CMakeFiles/untitled.dir/displayBuffer.cpp.o CMakeFiles/untitled.dir/physicsEntity.cpp.o CMakeFiles/untitled.dir/sprite.cpp.o CMakeFiles/untitled.dir/physicsEngine.cpp.o CMakeFiles/untitled.dir/levelLoader.cpp.o
+build TeaPlusPlus: CXX_EXECUTABLE_LINKER__TeaPlusPlus_Debug CMakeFiles/TeaPlusPlus.dir/main.cpp.o CMakeFiles/TeaPlusPlus.dir/displayBuffer.cpp.o CMakeFiles/TeaPlusPlus.dir/physicsEntity.cpp.o CMakeFiles/TeaPlusPlus.dir/sprite.cpp.o CMakeFiles/TeaPlusPlus.dir/physicsEngine.cpp.o CMakeFiles/TeaPlusPlus.dir/levelLoader.cpp.o
   FLAGS = -g
-  OBJECT_DIR = CMakeFiles/untitled.dir
+  OBJECT_DIR = CMakeFiles/TeaPlusPlus.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = untitled
-  TARGET_PDB = untitled.dbg
+  TARGET_FILE = TeaPlusPlus
+  TARGET_PDB = TeaPlusPlus.dbg
 
 
 #############################################
@@ -135,7 +135,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /home/venge/CLionProjects/untitled/cmake-build-debug
 
-build all: phony untitled
+build all: phony TeaPlusPlus
 
 # =============================================================================
 # Built-in targets
