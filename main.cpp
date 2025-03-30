@@ -88,15 +88,15 @@ int main() {
         float newcamX = camX;
         float newcamY = camY;
 
-        if (X > camX + fscreenWidth - 7) {
-            newcamX = X + 7 - fscreenWidth;
-        } else if (X < camX + 7) {
-            newcamX = X - 7;
+        if (X > camX + fscreenWidth - 27) {
+            newcamX = X + 27 - fscreenWidth;
+        } else if (X < camX + 27) {
+            newcamX = X - 27;
         }
-        if (Y > camY + fscreenHeight - 7) {
-            newcamY = Y + 7 - fscreenHeight;
-        } else if (Y < camY + 7) {
-            newcamY = Y - 7;
+        if (Y > camY + fscreenHeight - 27) {
+            newcamY = Y + 27 - fscreenHeight;
+        } else if (Y < camY + 27) {
+            newcamY = Y - 27;
         }
 
         buffish.moveCamera(newcamX,newcamY);

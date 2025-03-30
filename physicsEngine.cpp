@@ -150,7 +150,7 @@ void physicsEngine::entityTileCollision(idNum id) {
     if (entRightI >= 0 && entBottomI >= 0 && entLeftI <= mapX && entTopI <= mapY) {
         for (int y=entTopI-1; y<=entBottomI+1; y++) {
             for (int x=entLeftI-1; x<=entRightI+1; x++) {
-                if (y>mapY-1||x>mapX-1) {
+                if (y>mapY-1||x>mapX-1||y<0||x<0) {
                     break;
                 }
                 tileType tile = map[y][x];
