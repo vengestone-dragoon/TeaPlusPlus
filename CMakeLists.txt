@@ -16,4 +16,5 @@ add_executable(TeaPlusPlus main.cpp
         customTypes.h
         tileType.h
         levelLoader.h
-        levelLoader.cpp)
+        levelLoader.cpp
+        tileType.cpp)

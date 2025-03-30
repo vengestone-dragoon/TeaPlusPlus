@@ -15,4 +15,6 @@ enum tileType {
 
 };
 
+bool tileType_is_solid(tileType type);
+
 #endif //TILETYPE_H

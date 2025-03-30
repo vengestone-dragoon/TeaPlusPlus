@@ -4,6 +4,8 @@
 
 #include "physicsEngine.h"
 
+#include <strings.h>
+
 
 physicsEngine::physicsEngine() {
     gravity = 1;
@@ -22,9 +24,9 @@ void physicsEngine::initLevel(std::string fileName) {
 }
 
 
-idNum physicsEngine::spawnEntity(entityType type, float x, float y, float accel, float vLimit, int health, float weight) {
+idNum physicsEngine::spawnEntity(entityType type, float x, float y, float accel, float vLimit, int width, int height, int health, float weight) {
     idNum displayId=display->addEntity(type,x,y);
-    physicsEntity e(x,y,accel,vLimit,health,weight);
+    physicsEntity e(x,y,accel,vLimit,width,height,health,weight);
     entities.emplace_back(e,displayId);
     return entities.size()-1;
 }
@@ -90,7 +92,9 @@ void physicsEngine::setEntityAccel(idNum id, coordPair acc) {
 }
 
 void physicsEngine::runPhysics() {
-    for (std::tuple<physicsEntity,idNum>& e : entities) {
+    for (int index=0; index<entities.size(); index++) {
+        auto id = static_cast<idNum>(index);
+        auto& e = entities[index];
         physicsEntity& ent = std::get<0>(e);
         idNum displayId = std::get<1>(e);
         float accel = ent.accel;
@@ -127,11 +131,108 @@ void physicsEngine::runPhysics() {
         ent.vY = vY;
         ent.aX = aX;
         ent.aY = aY;
-        display->moveEntity(displayId,X,Y);
+        entityTileCollision(id);
+        display->moveEntity(displayId,ent.X,ent.Y);
     }
 }
 
 void physicsEngine::entityTileCollision(idNum id) {
     physicsEntity& ent = std::get<0>(entities[id]);
+    tileMap map = std::get<0>(level);
+    auto ftilewidth = static_cast<float>(std::get<1>(level));
+    auto ftileheight = static_cast<float>(std::get<2>(level));
+    auto entLeftI = static_cast<int>(ent.X/ftilewidth);
+    auto entRightI = static_cast<int>((ent.X+ent.width)/ftilewidth);
+    auto entTopI = static_cast<int>(ent.Y/ftileheight);
+    auto entBottomI = static_cast<int>((ent.Y+ent.height)/ftileheight);
+    auto mapY = static_cast<float>(map.size());
+    auto mapX = static_cast<float>(map[0].size());
+    if (entRightI >= 0 && entBottomI >= 0 && entLeftI <= mapX && entTopI <= mapY) {
+        for (int y=entTopI-1; y<=entBottomI+1; y++) {
+            for (int x=entLeftI-1; x<=entRightI+1; x++) {
+                if (y>mapY-1||x>mapX-1) {
+                    break;
+                }
+                tileType tile = map[y][x];
+                if (tileType_is_solid(tile)) {
+                    auto tileTop = static_cast<float>(y)*ftileheight;
+                    auto tileBottom = static_cast<float>(std::get<2>(level)) + tileTop;
+                    auto tileCenterY = (static_cast<float>(std::get<2>(level))/2) + tileTop;
+                    auto tileLeft = static_cast<float>(x)*ftilewidth;
+                    auto tileRight = static_cast<float>(std::get<1>(level)) + tileLeft;
+                    auto tileCenterX = (static_cast<float>(std::get<1>(level))/2) + tileLeft;
 
+                    float entTop = ent.Y;
+                    float entBottom = ent.Y+ent.height;
+                    float entCenterY = (ent.height/2) + ent.Y;
+                    float entLeft = ent.X;
+                    float entRight = ent.X+ent.width;
+                    float entCenterX = (ent.width/2) + ent.X;
+
+                    float intersectTop = entBottom - tileTop;
+                    float intersectBottom = tileBottom - entTop;
+                    float intersectLeft = entRight - tileLeft;
+                    float intersectRight = tileRight - entLeft;
+
+                    if (entCenterY>tileCenterY && entCenterX>tileCenterX) {
+                        if (intersectBottom > 0 && intersectRight > 0) {
+                            if (intersectBottom < intersectRight) {
+                                ent.Y += intersectBottom;
+                                setEntityVelocity(id,std::make_tuple(ent.vX,0));
+                            } else if (intersectRight < intersectBottom) {
+                                ent.X += intersectRight;
+                                setEntityVelocity(id,std::make_tuple(0,ent.vY));
+                            }
+                        }
+                    } else if (entCenterY<tileCenterY && entCenterX<tileCenterX) {
+                        if (intersectTop > 0 && intersectLeft > 0) {
+                            if (intersectTop < intersectLeft) {
+                                ent.Y -= intersectTop;
+                                setEntityVelocity(id,std::make_tuple(ent.vX,0));
+                            } else if (intersectLeft < intersectTop) {
+                                ent.X -= intersectLeft;
+                                setEntityVelocity(id,std::make_tuple(0,ent.vY));
+                            }
+                        }
+                    } else if (entCenterX>tileCenterX && entCenterY<tileCenterY) {
+                        if (intersectTop > 0 && intersectRight > 0) {
+                            if (intersectTop < intersectRight) {
+                                ent.Y -= intersectTop;
+                                setEntityVelocity(id,std::make_tuple(ent.vX,0));
+                            } else if (intersectRight < intersectTop) {
+                                ent.X += intersectRight;
+                                setEntityVelocity(id,std::make_tuple(0,ent.vY));
+                            }
+                        }
+                    } else if (entCenterX<tileCenterX && entCenterY>tileCenterY) {
+                        if (intersectBottom > 0 && intersectLeft > 0) {
+                            if (intersectBottom < intersectLeft) {
+                                ent.Y += intersectBottom;
+                                setEntityVelocity(id,std::make_tuple(ent.vX,0));
+                            } else if (intersectLeft < intersectBottom) {
+                                ent.X -= intersectLeft;
+                                setEntityVelocity(id,std::make_tuple(0,ent.vY));
+                            }
+                        }
+                    } else if (entCenterY==tileCenterY) {
+                        if (intersectLeft > 0) {
+                            ent.X -= intersectLeft;
+                            setEntityVelocity(id,std::make_tuple(0,ent.vY));
+                        } else if (intersectRight > 0) {
+                            ent.X += intersectRight;
+                            setEntityVelocity(id,std::make_tuple(0,ent.vY));
+                        }
+                    } else if (entCenterX==tileCenterX) {
+                        if (intersectTop > 0) {
+                            ent.Y -= intersectTop;
+                            setEntityVelocity(id,std::make_tuple(ent.vX,0));
+                        } else if (intersectBottom > 0) {
+                            ent.Y += intersectBottom;
+                            setEntityVelocity(id,std::make_tuple(ent.vX,0));
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

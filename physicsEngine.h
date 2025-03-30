@@ -26,7 +26,7 @@ public:
 
     void initLevel(std::string fileName);
 
-    idNum spawnEntity(entityType type, float x, float y, float accel, float vLimit, int health, float weight);
+    idNum spawnEntity(entityType type, float x, float y, float accel, float vLimit, int width, int height, int health, float weight);
 
     void despawnEntity(idNum id);
 

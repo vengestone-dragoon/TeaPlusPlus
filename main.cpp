@@ -51,7 +51,7 @@ int main() {
     buffish.addTileSprite(tileType::ground,ground);
 
 
-    idNum player_character = world.spawnEntity(entityType::player,20,20,30,50,100,100);
+    idNum player_character = world.spawnEntity(entityType::player,20,20,30,50,9,7,100,100);
 
     int jumpTimer = 0;
 
